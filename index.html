@@ -1,1 +1,88 @@
-dmm
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tool check số nguyên tố</title>
+	<style>
+		.red {
+			background-color: #dccbcb;
+    position: relative;
+    left: 0%;
+    width: 281px;
+    height: 95px;
+		}
+		label {
+			position: absolute;
+			left: 1%;
+		}
+		input {
+			padding: 5px;
+    position: absolute;
+    top: 2px;
+    left: 49%;
+    width: 112px;
+		}
+		button {
+			    padding: 10px;
+    position: absolute;
+    left: 69%;
+    top: 41px;
+    width: 25%;
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<div class="red">
+	<label for="numb">Nhập số cần check: </label>
+
+	<input type="number" name="numb" id="number"></input>
+	<br>
+	<br>
+	<button onclick="nguyento()">Check</button>
+	</div>
+
+</body>
+<script type="text/javascript">
+	          function nguyento(){
+	          	var num = document.getElementById('number');
+	          	if(num && num.value){
+            check = true;
+            if(num.value<2){
+          			check = false;
+            }else if(num.value==2){
+          			check = true;
+
+            }else if( num.value%2==0 ){
+          			check = false;
+
+            }else {
+          for (var i = 3; i < Math.sqrt(num.value); i+=2) {
+          		if (num.value % i == 0) {
+          			check = false;
+          			break; //thoát vòng lặp
+          		}
+          }
+
+            }
+
+
+	          	}else {
+	          		alert('không nhập số à ');	  
+	          		        	}
+	          	
+if (check == true) {
+	alert('Số '+num.value+' là số nguyên tố');
+}else {
+		alert('Số '+num.value+' ko là số nguyên tố');
+
+}
+	          	
+	          }
+
+
+
+
+</script>
+</html>
