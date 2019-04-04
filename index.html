@@ -35,13 +35,15 @@
 </head>
 <body>
 	<div class="red">
+		<form method="post"  onsubmit="return nguyento()">
 	<label for="numb">Nhập số cần check: </label>
 
 	<input type="number" name="numb" id="number"></input>
 	<br>
 	<br>
-	<button onclick="nguyento()">Check</button>
+	<button type="submit" >Check</button>
 	</div>
+	</form>
 
 </body>
 <script type="text/javascript">
@@ -70,6 +72,8 @@
 
 	          	}else {
 	          		alert('không nhập số à ');	  
+	          		    return false;
+
 	          		        	}
 	          	
 if (check == true) {
@@ -78,6 +82,8 @@ if (check == true) {
 		alert('Số '+num.value+' ko là số nguyên tố');
 
 }
+    return false;
+
 	          	
 	          }
 
