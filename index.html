@@ -6,89 +6,112 @@
 	<style>
 		.red {
 			background-color: #dccbcb;
-    position: relative;
-    left: 0%;
-    width: 281px;
-    height: 95px;
+		    position: relative;
+		    left: 0%;
+		    width: 281px;
+		    height: 105px;
 		}
+		.result {
+		    position: fixed;
+		    left: 8px;
+		    top : 120px ;
+		    width: 281px;
+		    height: 105px;
+		}
+		.result2 {
+			background-color: #dccbcb;
+		    position: relative;
+		    left: 0px;
+		    top: -1px;
+		    width: 281px;
+		    height: 105px;
+		}
+
 		label {
 			position: absolute;
 			left: 1%;
+			top: 5px;
 		}
-		input {
+
+		.a {
 			padding: 5px;
-    position: absolute;
-    top: 2px;
-    left: 49%;
-    width: 112px;
+		    position: absolute;
+		    top: 5px;
+		    left: 10%;
+		    width: 40px;
 		}
+		.b {
+			padding: 5px;
+		    position: absolute;
+		    top: 5px;
+		    left: 36%;
+		    width: 40px;
+		}
+		.c {
+			padding: 5px;
+		    position: absolute;
+		    top: 5px;
+		    left: 60%;
+		    width: 40px;
+		}
+
 		button {
-			    padding: 10px;
-    position: absolute;
-    left: 69%;
-    top: 41px;
-    width: 25%;
+		    padding: 7px;
+		    position: absolute;
+		    left: 69%;
+		    top: 41px;
+		    width: 25%;
 		}
+		p {
+			position: absolute;
+
+		}
+		
 		
 		
 	</style>
 </head>
 <body>
 	<div class="red">
-		<form method="post"  onsubmit="return nguyento()">
-	<label for="numb">Nhập số cần check: </label>
-
-	<input type="number" name="numb" id="number"></input>
+	<input class="a" type="number" name="numb" id="a" placeholder="a"></input>
+	<input class="b" type="number" name="numb" id="b" placeholder="b"></input>
+	<input class="c" type="number" name="numb" id="c" placeholder="c"></input>
 	<br>
 	<br>
-	<button type="submit" >Check</button>
+	<button id="ok" >Giải</button>
 	</div>
-	</form>
+	<div class="result">
+	<div class="result2">
+	<p id="result">a</p>
+    </div>
+    </div>
+
+
 
 </body>
 <script type="text/javascript">
-	          function nguyento(){
-	          	var num = document.getElementById('number');
-	          	if(num && num.value){
-            check = true;
-            if(num.value<2){
-          			check = false;
-            }else if(num.value==2){
-          			check = true;
+	document.getElementById("ok").addEventListener("click", function(){
+		a = document.getElementById("a").value;
+		b = document.getElementById("b").value;
+		c = document.getElementById("c").value;
 
-            }else if( num.value%2==0 ){
-          			check = false;
+		d = b*b - 4*a*c ;
+		    if (d < 0) {
+		    	r ="Kết quả: Phương trình vô nghiệm, DELTA = " + d;
+		    } else if (d == 0) {
+		    	n = -b/(2*a);
+		    	r = "Kết quả: Phương trình có nghiệm kép : x1 = x2 =  " +n ;
 
-            }else {
-          for (var i = 3; i < Math.sqrt(num.value); i+=2) {
-          		if (num.value % i == 0) {
-          			check = false;
-          			break; //thoát vòng lặp
-          		}
-          }
+		    } else if (d > 0) {
+   				x1 = (-b-Math.sqrt(d))/(2*a);
+   				x2 = (-b+Math.sqrt(d))/(2*a);
+   				r = "Kết quả: Phương trình có 2 nghiệm : x1 = "+x1+ "; x2 =  " +x2 ;
+			}
 
-            }
+		document.getElementById("result").innerHTML=r;
 
+	});
 
-	          	}else {
-	          		alert('không nhập số à ');	  
-	          		    return false;
-
-	          		        	}
-	          	
-if (check == true) {
-	alert('Số '+num.value+' là số nguyên tố');
-}else {
-		alert('Số '+num.value+' ko là số nguyên tố');
-
-}
-    return false;
-
-	          	
-	          }
-
-
-
-
+		
 </script>
 </html>
