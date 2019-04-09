@@ -4,30 +4,33 @@
 	<meta charset="UTF-8">
 	<title>Tool check số nguyên tố</title>
 	<style>
-.red {
-	background-color: #dccbcb;
-    position: relative;
-    left: 0%;
-    width: 281px;
-    height: 95px;
+		.red {
+			background-color: #dccbcb;
+		    position: relative;
+		    left: 0%;
+		    width: 281px;
+		    height: 95px;
 		}
-label {
-	position: absolute;
-	left: 1%;
+
+		label {
+			position: absolute;
+			left: 1%;
 		}
-input {
-	padding: 5px;
-    position: absolute;
-    top: 2px;
-    left: 49%;
-    width: 112px;
+
+		input {
+			padding: 5px;
+		    position: absolute;
+		    top: 2px;
+		    left: 49%;
+		    width: 112px;
 		}
-button {
-    padding: 10px;
-    position: absolute;
-    left: 69%;
-    top: 41px;
-    width: 25%;
+
+		button {
+		    padding: 10px;
+		    position: absolute;
+		    left: 69%;
+		    top: 41px;
+		    width: 25%;
 		}
 		
 		
@@ -45,44 +48,46 @@ button {
 
 </body>
 <script type="text/javascript">
-	         document.getElementById("ok").addEventListener("click", function(){
-var num = this;
-if(num && num.value){
-    			check = true;
-    if(num.value<2){
+	document.getElementById("ok").addEventListener("click", function(){
+		var num = this;
+		if (num && num.value) {
+		    check = true;
+		    if (num.value<2){ 
 				check = false;
-    }else if(num.value==2){
+
+		    } else if(num.value==2) {
 				check = true;
+ 
+		    } else if( num.value % 2 == 0 ) {
+		        check = false;
 
-    }else if(num.value%2==0 ){
-          		check = false;
+		    } else {
+		        for (var i = 3; i < Math.sqrt(num.value); i+=2) {
+		          	if (num.value % i == 0) {
+		          		check = false;
+		          		break; //thoát vòng lặp
+		          	}
+		        }
+		    }
 
-    }else {
-        for (var i = 3; i < Math.sqrt(num.value); i+=2) {
-          	if (num.value % i == 0) {
-          			check = false;
-          			break; //thoát vòng lặp
-          		}
-          }
+		} else {
+			alert('không nhập số à ');	  
+		}
 
-            }
-
-
-	}else {
-	          		alert('không nhập số à ');	  
-	          		        	}
-	        if (check == true) {
+		if (check == true) {
 			alert('Số '+num.value+' là số nguyên tố');
-	}else if(check == false) {
+		} else if(check == false) {
 			alert('Số '+num.value+' ko là số nguyên tố');
+		}
 
-				}
-	          	
-	          });
+		if (true) {
+
+		} else {
+
+		}
+			          	
+	});
+
 		
-
-
-
-
 </script>
 </html>
